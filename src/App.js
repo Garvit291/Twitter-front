@@ -7,17 +7,19 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import Tweet from './Components/Tweet'
 function App() {
   return (
-    <>
+    <div className='h-full'>
       <NavBar/>
       <Routes>
       <Route exact path="/" element={<HomePage/>} />
       <Route path="/about" element={<AboutUs/>} />
       <Route path="/product" element={<SourceCode/>} />
+      <Route path="/tweet" element={<Tweet/>} />
       </Routes>
       <Footer/>
-    </>
+    </div>
   );
 }
 

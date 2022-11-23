@@ -59,7 +59,7 @@ function NavBar() {
             >
                 <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                     <li className="text-white hover:text-indigo-200">
-                        <a href="javascript:void(0)">Home</a>
+                    <Link to='/'>Home</Link>
                     </li>
                     <li className="text-white hover:text-indigo-200">
                         <Link to='/product'>Product</Link>
@@ -88,7 +88,10 @@ function NavBar() {
                 href="javascript:void(0)"
                 className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
             >
+                <Link to='/tweet'>
                 Tweet
+                </Link>
+
             </a>
             
         </div>

@@ -18,16 +18,16 @@ function PieChart({data}) {
             indexLabel: "{label}: {y}%",		
             startAngle: -90,
             dataPoints: [
-                { y: data.positive, label: "Positive" },
                 { y: data.neutral, label: "Neutral" },
                 { y: data.negative, label: "Negative" },
+                {y: data.positive, label: "Positive"}
+                
             ]
         }]
     }
   return (
     <div>
 			<CanvasJSChart options = {options} 
-				/* onRef={ref => this.chart = ref} */
 			/>
 			
 		</div>

@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,3 +16,105 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
+
+.cloud1{
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  animation : animate 16s linear infinite;
+  animation-direction: alternate;
+  height: 100%;
+}
+
+.cloud2{
+  top:20px;
+  left: 0;
+  width: 100%;
+  animation : animate 20s  linear infinite;
+  height: 100%;
+}
+
+.cloud3{
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  animation : animate 30s  linear infinite;
+  animation-direction: alternate;
+
+  height: 100%;
+}
+.cloud4{
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  animation : animate 35s  linear infinite;
+  height: 100%;
+}
+.cloud5{
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  animation : animate 40s linear infinite;
+  animation-direction: alternate;
+
+  height: 100%;
+}
+@keyframes animate {
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
+
+#scroll-text {
+  height: 100%;
+  text-align: center;
+  
+  /* animation properties */
+  -moz-transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  
+  -moz-animation: my-animation 5s linear infinite;
+  -webkit-animation: my-animation 5s linear infinite;
+  animation: my-animation 5s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateY(-100%); }
+  to { -moz-transform: translateY(100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateY(-100%); }
+  to { -webkit-transform: translateY(100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  to {
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+
+.container {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.container::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
