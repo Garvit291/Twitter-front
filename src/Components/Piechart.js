@@ -18,19 +18,20 @@ function PieChart({data}) {
             indexLabel: "{label}: {y}%",		
             startAngle: -90,
             dataPoints: [
-                { y: data.neutral, label: "Neutral" },
-                { y: data.negative, label: "Negative" },
-                {y: data.positive, label: "Positive"}
-                
+                { y: data.very_good, label: "Very Good" },
+                { y: data.good, label: "Good" },
+                {y: data.neutral, label: "Neutral"},
+                {y: data.bad, label: "Bad"},
+                {y: data.very_bad, label: "Very Bad"}
             ]
         }]
     }
   return (
-    <div>
+    
 			<CanvasJSChart options = {options} 
 			/>
 			
-		</div>
+		
   )
 }
 

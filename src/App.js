@@ -8,6 +8,7 @@ import {
   Routes
 } from "react-router-dom";
 import Tweet from './Components/Tweet'
+import User from './Components/User'
 function App() {
   return (
     <div className='h-full'>
@@ -17,6 +18,8 @@ function App() {
       <Route path="/about" element={<AboutUs/>} />
       <Route path="/product" element={<SourceCode/>} />
       <Route path="/tweet" element={<Tweet/>} />
+      <Route path="/user" element={<User/>} />
+
       </Routes>
       <Footer/>
     </div>
