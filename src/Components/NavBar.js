@@ -65,10 +65,10 @@ function NavBar() {
                         <Link to='/product'>Product</Link>
                     </li>
                     <li className="text-white hover:text-indigo-200">
-                        <a href="javascript:void(0)">About US</a>
+                        <Link to='/us'>About us</Link>
                     </li>
                     <li className="text-white hover:text-indigo-200">
-                        <a href="javascript:void(0)">Contact US</a>
+                        <Link to='/feedback'>Feedback</Link>
                     </li>
                     <li className="text-white hover:text-indigo-200">
                         <Link to='/user'>User Arena</Link>

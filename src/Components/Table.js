@@ -132,7 +132,7 @@ export function bold({value}){
         <span
           className=
             
-              "px-3 py-1 text-xs font-bold bg-blue-400 rounded-full shadow-sm leading-wide "
+              "px-3 py-1 text-sm font-bold text-blue-400 rounded-full shadow-sm "
           
         >
           {status}
@@ -210,9 +210,9 @@ function Table({ columns, data }) {
       </div>
       {/* table */}
       <div className="flex flex-col mt-4">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+        <div className="mx-4 my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full max-w-[90vw] py-2 align-middle sm:px-6 lg:px-8">
+            <div className="overflow-x-scroll border-b border-gray-200 shadow sm:rounded-lg">
               <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   {headerGroups.map(headerGroup => (

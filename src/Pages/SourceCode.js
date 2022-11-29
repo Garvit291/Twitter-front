@@ -141,7 +141,7 @@ function SourceCode() {
         </div>
         <div className='flex flex-col w-full px-16 mt-12 space-y-4'>
           <textarea type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter Keyword'
-            className='w-full h-40 p-2 pt-0 text-gray-400 bg-white border-2 border-gray-400 rounded-lg outline-none' />
+            className='w-full h-40 p-3 text-gray-400 bg-white border-2 border-gray-400 rounded-lg outline-none' />
           <div className='flex justify-end w-full space-x-4'>
             <button className={`w-16 h-16 p-3 border-2 border-red-200 rounded-full outline-none ${isListening ? 'bg-red-400' : 'bg-gray-400'}`}
               onClick={() => setIsListening(prevState => !prevState)}
@@ -161,7 +161,7 @@ function SourceCode() {
                   result == "very_good" ? "bg-green-100 text-green-800" : null,
                   result == "good" ? "bg-green-100 text-green-800" : null,
                   result == "neutral" ? "bg-yellow-100 text-yellow-800" : null,
-                  result == "bad" ? "bg-green-100 text-green-800" : null,
+                  result == "bad" ? "bg-red-100 text-red-800" : null,
                   result == "very_bad" ? "bg-red-100 text-red-800" : null,
                 )
               }>{result}</h1>

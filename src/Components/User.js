@@ -6,6 +6,8 @@ import { MicrophoneIcon } from '@heroicons/react/solid'
 import { classNames } from './shared/Utils'
 import { TwitterFollowButton } from 'react-twitter-embed';
 import Table, { StatusPill2 } from './Table';
+import { TwitterHashtagButton } from 'react-twitter-embed';
+
 
 
 
@@ -48,27 +50,27 @@ function User() {
     const cols = [
 
         {
-          Header: "Sentiment Analysis",
-          accessor: 'Analysis',
-          Cell: StatusPill2,
+            Header: "Sentiment Analysis",
+            accessor: 'Analysis',
+            Cell: StatusPill2,
         },
-        
-    
+
+
         {
-          Header: "Polarity",
-          accessor: 'Polarity',
+            Header: "Polarity",
+            accessor: 'Polarity',
         },
-       
+
         {
-          Header: "Tweet",
-          accessor: 'Tweets',
-          
+            Header: "Tweet",
+            accessor: 'Tweets',
+
         },
         {
-          Header: "Subjectivity",
-          accessor: 'Subjectivity',
+            Header: "Subjectivity",
+            accessor: 'Subjectivity',
         },
-      ]
+    ]
 
 
 
@@ -161,6 +163,10 @@ function User() {
                                 <div className="selfCenter spaceBetween">
                                     <TwitterFollowButton
                                         onLoad={function noRefCheck() { }}
+                                        options={{
+                                            size: 'large'
+                                        }}
+                                        placeholder="Loading"
                                         screenName={search}
                                     />
                                 </div>
