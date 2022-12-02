@@ -5,6 +5,7 @@ import cloud2 from '../cloud2.png'
 import cloud3 from '../cloud3.png'
 import cloud4 from '../cloud4.png'
 import cloud5 from '../cloud5.png'
+import { Link } from 'react-router-dom'
 
 function HomeHero() {
   return (
@@ -18,9 +19,13 @@ function HomeHero() {
                 Some catchy line here.....
             </p>
         </div>
-        <div className='flex items-center justify-center w-3/5 mt-4 space-x-5 bg-purple-600'>
-            <button className='z-10 w-40 p-2 text-white bg-purple-400 rounded-full '>Pretweet</button>
-            <button className='z-10 w-40 p-2 text-purple-400 bg-white rounded-full '> Analysis</button>
+        <div className='z-10 flex items-center justify-center w-3/5 mt-4 space-x-5 '>
+            <Link to='/tweet'>
+                <button className='z-10 w-40 p-2 text-white bg-purple-400 rounded-full '>Pretweet</button>
+            </Link>
+            <Link to='/product'>
+                <button className='z-10 w-40 p-2 text-purple-400 bg-white rounded-full '> Analysis</button>
+            </Link>
         </div>
         <div className="absolute z-0 hidden lg:flex clouds">
             <img src={cloud1} className="cloud1" alt="" />

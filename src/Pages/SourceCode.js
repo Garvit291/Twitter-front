@@ -6,6 +6,9 @@ import classNames from 'classnames';
 import { MicrophoneIcon } from '@heroicons/react/solid'
 import Table, { bold, multi, StatusPill } from '../Components/Table';
 import { TwitterHashtagButton } from 'react-twitter-embed';
+import Loader from '../Components/Loader';
+
+
 
 
 
@@ -23,6 +26,7 @@ function SourceCode() {
 
   const [isListening, setIsListening] = useState(false)
   const [search, setSearch] = useState('');
+  const [isLoading, setisLoading] = useState(false)
   const [text, setText] = useState('');
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -61,6 +65,9 @@ function SourceCode() {
       accessor: 'Subjectivity',
     },
   ]
+
+
+
 
   useEffect(() => {
     if (data) {
@@ -121,23 +128,24 @@ function SourceCode() {
     setResult();
     setData();
     try {
+      setisLoading(true)
       const results = await axios.get(`http://localhost:5000/sentiment/${search}`)
         .then(res => setData(res.data))
     }
     catch (err) {
       window.alert("Some error in fetching please try another input")
     }
+    setisLoading(false);
 
 
   }
-
 
 
   return (
     <>
       <div className='w-full p-6 space-y-4 bg-white ' style={{ minHeight: "75vh" }}>
         <div className='flex justify-center w-full '>
-          <h1 className='text-4xl font-extrabold text-gray-400 '>Enter the input or use mic</h1>
+          <h1 className='text-4xl font-extrabold tracking-tight text-center text-gray-900 '>Enter the input or use mic</h1>
         </div>
         <div className='flex flex-col w-full px-16 mt-12 space-y-4'>
           <textarea type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter Keyword'
@@ -148,7 +156,14 @@ function SourceCode() {
             >
               <MicrophoneIcon color='black' />
             </button>
-            <button className='w-40 p-2 text-white bg-purple-400 rounded-full ' onClick={fetchResults} > Get analysis</button>
+            <a onClick={fetchResults} class="relative cursor-pointer inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-indigo-600 rounded-full hover:text-white group hover:bg-gray-50">
+              <span class="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+              <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </span>
+              <span  class="relative">Fetch Results</span>
+            </a>
+            {/* <button className='w-40 p-2 text-white bg-purple-400 rounded-full '  > Get analysis</button> */}
           </div>
         </div>
 
@@ -190,8 +205,11 @@ function SourceCode() {
             <Table columns={cols} data={data.database} />
           </div>
         </>)
-          : null}
+          : isLoading ? <Loader /> : null}
+
+
       </div>
+
     </>
   )
 }

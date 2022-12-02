@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import Loader from './Loader';
 
 
 
@@ -12,11 +13,22 @@ function Trending() {
 
 
     const [hashtags , setHashtags] = useState([]);
+    const [isLoading , setIsLoading] = useState(false)
 
     const  fetchTrendingHashtags =  async() =>{
-        const result = await axios.get('http://127.0.0.1:5000/tophashtags').
-        then(result=>setHashtags(result.data)).
-        then(console.log("fetched"))
+
+        try{
+            setIsLoading(true)
+            const result = await axios.get('http://127.0.0.1:5000/tophashtags').
+        then(result=>setHashtags(result.data))
+        }
+        catch(err){
+            console.log(err);
+        }
+
+        setIsLoading(false)
+        
+        
        
     }
 
@@ -39,14 +51,16 @@ function Trending() {
             {hashtags?
             (
             <>
-            {hashtags.map((hashtag)=>{
+            {hashtags.map((hashtag , i)=>{
                 return(
-                    <div id='' className='w-full p-2 space-y-2 text-2xl font-semibold text-white bg-blue-400'>
+                    <div key={i} className='w-full p-2 space-y-2 text-2xl font-semibold text-white bg-blue-400'>
                         {hashtag}
                     </div>
                 )
             })}
-            </>):null}
+            </>): isLoading ? <div  className='w-full p-2 space-y-2 text-2xl font-semibold text-white bg-blue-400'>
+                        Loading...
+                    </div> : null}
             
         </div>
         

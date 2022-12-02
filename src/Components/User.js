@@ -7,6 +7,7 @@ import { classNames } from './shared/Utils'
 import { TwitterFollowButton } from 'react-twitter-embed';
 import Table, { StatusPill2 } from './Table';
 import { TwitterHashtagButton } from 'react-twitter-embed';
+import Loader from './Loader';
 
 
 
@@ -33,6 +34,7 @@ function User() {
     }
     const [data, setData] = useState();
     const [result, setResult] = useState();
+    const [isLoading , setIsLoading] = useState(false);
 
     useEffect(() => {
         if (data) {
@@ -115,6 +117,7 @@ function User() {
         setData();
 
         try {
+            setIsLoading(true)
             const results = await axios.get(`http://localhost:5000/sentiment/userid/${search}`)
                 .then(res => setData(res.data))
         }
@@ -123,6 +126,8 @@ function User() {
             window.alert("Username doesnt exist")
         }
 
+        setIsLoading(false)
+
 
 
     }
@@ -130,7 +135,7 @@ function User() {
     return (
         <div className='w-full p-6 space-y-4 bg-white' style={{ minHeight: "75vh" }}>
             <div className='flex justify-center w-full '>
-                <h1 className='text-4xl font-extrabold text-gray-400 '>Enter Twitter username </h1>
+                <h1 className='text-4xl font-extrabold tracking-tight text-center text-gray-900'>Enter Twitter username </h1>
             </div>
             <div className='flex justify-around w-full px-16 mt-12 space-x-2'>
                 <input type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter Keyword'
@@ -175,7 +180,7 @@ function User() {
                         <Table columns={cols} data={data.output} />
                     </div>
                 </>)
-                    : null}
+                    : isLoading ? <Loader/> : null}
             </div>
         </div>
     )

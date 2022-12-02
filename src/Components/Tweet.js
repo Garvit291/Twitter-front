@@ -5,6 +5,7 @@ import { MicrophoneIcon } from '@heroicons/react/solid'
 
 import { classNames } from './shared/Utils'
 import { TwitterShareButton } from 'react-twitter-embed';
+import Loader from './Loader';
 
 
 
@@ -28,6 +29,7 @@ function Tweet() {
   }
   const [data, setData] = useState();
   const [result, setResult] = useState();
+  const [isLoading , setIsLoading] = useState(false)
 
   useEffect(() => {
     if (data) {
@@ -83,15 +85,25 @@ function Tweet() {
     setResult();
     setData();
 
-    const results = await axios.get(`http://localhost:5000/sentiment/user/${search}`)
+    try{
+      setIsLoading(true)
+      const results = await axios.get(`http://localhost:5000/sentiment/user/${search}`)
       .then(res => setData(res.data))
+    }
+    catch(err){
+      window.prompt('try another input ')
+    }
+
+    setIsLoading(false)
+
+    
 
   }
 
   return (
     <div className='w-full p-6 space-y-4 bg-white' style={{ minHeight: "75vh" }}>
       <div className='flex justify-center w-full '>
-        <h1 className='text-4xl font-extrabold text-gray-400 '>Enter the input tweet or use mic</h1>
+        <h1 className='text-4xl font-extrabold tracking-tight text-center text-gray-900'>Enter the input tweet or use mic</h1>
       </div>
       <div className='flex flex-col w-full px-16 mt-12 space-y-4'>
         <textarea type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter Keyword'
@@ -136,7 +148,7 @@ function Tweet() {
             </div>
           </div>
         </>)
-          : null}
+          : isLoading ? <Loader/> : null}
       </div>
     </div>
   )
