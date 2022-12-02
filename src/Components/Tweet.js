@@ -106,8 +106,8 @@ function Tweet() {
         <h1 className='text-4xl font-extrabold tracking-tight text-center text-gray-900'>Enter the input tweet or use mic</h1>
       </div>
       <div className='flex flex-col w-full px-16 mt-12 space-y-4'>
-        <textarea type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter Keyword'
-          className='w-full h-40 p-4 text-gray-400 bg-white border-2 border-gray-400 rounded-lg outline-none' />
+        <textarea type='text' value={search} onChange={e => handleSearchChange(e)} placeholder='Enter tweet' maxLength="130"
+          className='w-full h-40 p-4 text-xl text-gray-700 bg-white border-2 border-gray-400 rounded-lg outline-none' />
         <div className='flex justify-end w-full space-x-4'>
           <button className={`w-16 h-16 p-3 border-2 border-red-200 rounded-full outline-none ${isListening ? 'bg-red-400' : 'bg-gray-400'}`}
             onClick={() => setIsListening(prevState => !prevState)}
